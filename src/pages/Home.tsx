@@ -21,7 +21,7 @@ export const Home = () => {
       setLoading(true);
       setError(false);
       const response = await fetch(
-        `${apiUrl}${apiDetails.posts}?_limit=8&_page=${page}${
+        `${apiUrl}${apiDetails.posts}?_limit=10&_page=${page}${
           debouncedQuery && `&q=${debouncedQuery}`
         }`
       );
@@ -32,7 +32,7 @@ export const Home = () => {
 
       const data = await response.json();
 
-      setHasMore(data.length === 8);
+      setHasMore(data.length === 10);
       setPosts((prev) => (page === 1 ? data : [...prev, ...data]));
     } catch (error) {
       console.error("Fetch error:", error);
